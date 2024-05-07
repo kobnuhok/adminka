@@ -1,8 +1,7 @@
-     // routes/games.js
-     const gamesRouter = require("express").Router(); // Создали роутер
-     const { readData, writeData } = require("../utils/data"); // Чтение и запись данных в JSON-файл
-     
-     // Получим игры из JSON-файла и отправим в ответ на запрос
+     const gamesRouter = require("express").Router(); 
+     const fs = require('fs').promises;
+
+     const { readData, writeData } = require("../utils/data"); 
      const getAllGames = async (req, res) => {
        const games = await readData("./data/games.json");
        if (!games) {
@@ -18,7 +17,6 @@
      };
      
      const deleteGame = async (req, res) => {
-         // Получим данные из файла
        const games = await readData("./data/games.json");
        if (!games) {
          res.status(400);
