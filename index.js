@@ -12,9 +12,10 @@ const app = express();
 
 app.use(
   bodyParser.json(),
+  express.static(path.join(__dirname, 'public')),
   mainRoute, 
   gamesRouter,
-  express.static(path.join(__dirname, 'public'))
+
 );
 
 app.listen(PORT, () => {
